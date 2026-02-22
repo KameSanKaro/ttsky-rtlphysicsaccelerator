@@ -96,12 +96,14 @@ module singleBitShiftReg ( reset,
    assign q        = s_stateReg;
    assign shiftOut = s_stateReg[nrOfStages-1];
    assign s_clock  = negateClock == 0 ? clock : ~clock;
-   assign s_stateNext = (parLoad) ? d : {s_stateReg[nrOfStages-2:0],shiftIn};
+   assign s_stateNext = (parLoad) ? d : {s_stateReg[nrOfStages-1:0], shiftIn};
 
    always @(posedge s_clock or posedge reset)
    begin
-      if (reset) s_stateReg <= 0;
-      else if ((shiftEnable|parLoad)&tick) s_stateReg <= s_stateNext;
+      if (reset) 
+         s_stateReg <= 0;
+      else if ((shiftEnable | parLoad) & tick) 
+         s_stateReg <= s_stateNext[nrOfStages-1:0]; // Ensure bit-width match
    end
 
 endmodule
