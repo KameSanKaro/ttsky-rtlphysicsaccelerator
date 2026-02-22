@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = tt_um_rtlphysicsaccelerator.v synthesizedClockGenerator.v main.v logisimTickGenerator.v gridcellREGALU.v gridcell.v cellFSM.v cellALU.v Subtractor.v Shifter_8_bit.v Shift_Register.v SemiGaussianTestInput.v NOR_GATE.v Multiplexer_bus_2.v LogisimClockComponent.v D_FLIPFLOP.v ConvergenceChecker.v Comparator.v BoundaryCell.v Adder.v AND_GATE.v
 
 ifneq ($(GATES),yes)
 
